@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<title>Registro gastos</title>
+</head>
+<body>
+  <div class="container">
+  	<header>
+  		<h1 class="text-center">Registro mensual de gastos</h1>
+  	</header>
+  	<section class="contenido-principal">
+  		<div class="row">
+  			<div class="col">
+  				<div class="contenido1">
+  					<h2 class="text-center">INGRESOS DE GASTOS</h2>
+                    <form id="agregar-gastos" action="#">
+                    	<div class="form-group">
+                            <label for="gasto">Gasto:</label>
+                    		<input type="text" class="form-control" id="gasto" placeholder="Nombre del gasto">
+                    	</div>
+                    	<div class="form-group">
+                    		<label for="valor">Cantidad:</label>
+                            <input type="text"class="form-control" id="cantidad" placeholder="Cantidad de $">
+                    	</div>
+
+                      <button type="submit" class="btn btn-dark">Agregar</button>
+                    </form>
+
+  				</div>
+
+  			</div>
+
+  			<div class="col">
+  				<div class="contenido2">
+  					<h2 class="text-center">REGISTRO DE GASTOS </h2>
+
+                <div id="gastos">
+                <ul class="list-group"></ul>
+                </div>
+
+                <div id="presupuesto" class="presupuesto">
+                	<div class="alert alert-danger">
+                		<p>Presupuesto: $ <span id="total"></span></p>
+                  	</div>
+                    <div class="alert alert-warning">
+                      <p>Restante:  $ <span id="restante"></span></p> 
+                    </div>
+                </div><!---presupuesto   -->
+
+  				</div><!--contenido2 -->
+  				
+
+  			</div><!-- col -->
+           
+  		</div><!-- row -->
+
+  	</section>
+  </div><!-- contenedor -->
+</body>
+</html>
