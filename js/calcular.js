@@ -20,6 +20,23 @@ class Presupuesto
 		this.disponible  = Number(presupuesto);
 		this.gastos = [];
 	}
+  nuevoGasto(gasto)
+  {
+    this.gastos=[...this.gastos,gasto];
+    this.dinerorestante();
+  }
+
+  eliminargasto(id)
+  {
+    this.gastos = this.gastos.filter(gasto =>gasto.id.toString()!== id);
+    this.dinerorestante();
+  }
+
+  dinerorestante()
+  {
+    const gastado = this.gastos.reduce((total,restante)=> total+gasto.Valor,0);
+    this.disponible = this.presupuesto-gastado;
+  }
 
 
 }
@@ -54,6 +71,19 @@ class Interfaz
     document.querySelector('.contenido1').insertBefore(divMensaje,formulario);
 
    }
+   agregargastolistado(gastos)
+   {
+    gastos.forEach(gasto=>{
+      const{Nombre,Valor,id}=gasto;
+      const nuevogasto = document.createElement('li');
+      nuevogasto.className ='list-group-item d-flex justify-content-between align-items-center';
+      nuevogasto.dataset.id=id;
+
+      nuevogasto.innerHTML= `${Nombre}<span class="badge badge-primary badge-pill">${Valor}</span>
+      `;
+    })
+   }
+
 
 }
 //instanciar clases de forma global
@@ -91,6 +121,21 @@ function agregarGasto(e)
    if(Nombre === '' || Valor === '')
    {
       inte.imprimiralerta('los campos son obligatorios','error');
+   }else if(Valor<=0 || isNaN(Valor))
+   {
+     inte.imprimiralerta('Cantidad no es valida');
+
+
+   }else 
+   {
+     const gasto = {Nombre, Valor,id:Date.now()};
+
+     presupuesto.nuevoGasto(gasto);
+
+     inte.imprimiralerta('correcto', 'Es valido');
+
+     const {gastos}=presupuesto;
+     inte.agregargastolistado(gastos);
    }
 
 
